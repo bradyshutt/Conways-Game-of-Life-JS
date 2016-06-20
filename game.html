@@ -6,7 +6,7 @@
 
 <style type="text/css">
    * { margin: 0px; padding: 0px; font: bold 10px Droid Sans, sans-serif; 
-       color: #1D1D1D; } 
+       color: #4D4D4D; } 
    body { background-color: black; }
    h1 { font-size: 20px; display: block; } 
    .header { text-align: center; }
@@ -14,14 +14,16 @@
 
 </head> 
 <body> 
-   <div class="header">
+   <div class="header" id="head">
       <h1>Conway's Game of Life</h1>
       <p> Brady Shutt &nbsp;&nbsp;&nbsp; Github </p>
    </div>
 
-   <canvas id="board" width="100%"></canvas>
+   <canvas id="board" width=500 height=500></canvas>
 
-   <script type="text/javascript" src="Conway.js"></script>
+   <script type="text/javascript" src="Cell.js"></script>
+   <script type="text/javascript" src="Board.js"></script>
+   <script type="text/javascript" src="conway.js"></script>
 
 </body> 
 </html>
