@@ -26,7 +26,13 @@ function start() {
 
    var board = new Board(canvas, 100);
 
-   board.drawCells();
+
+   board.randomize(8).drawCells();
+
+   board.anyAlive();
+
+   //board.start(1000);
+
    //board.fillBoard();
 
 
