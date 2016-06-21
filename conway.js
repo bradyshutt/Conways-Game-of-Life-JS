@@ -7,25 +7,28 @@ var ready = setInterval( function() {
 }, 100)
 
 
+var canvas;
+var context;
+
 function start() {
 
    var cell = new Cell(100, 100, 100, 100);
 
-   var canvas = document.getElementById('board');
-   var context = canvas.getContext('2d');
-
+   canvas = document.getElementById('board');
+   context = canvas.getContext('2d');
 
    var headerHeight = document.getElementById('head').clientHeight;
    var pageHeight = window.innerHeight;
 
+
    canvas.width = window.innerWidth;
    canvas.height = pageHeight - headerHeight;
 
-   var board = new Board(canvas, 20);
+   var board = new Board(canvas, 100);
 
-   board.drawGridlines(context);
+   board.drawCells();
+   //board.fillBoard();
 
-   cell.draw(context);
 
 };
 

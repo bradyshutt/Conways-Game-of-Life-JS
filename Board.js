@@ -1,57 +1,59 @@
+/* Board.js Class */
 
+function Cell(xGrid, yGrid) {
+   this.x = xGrid * this.width; /* Pixel location */
+   this.y = yGrid * this.height; /* Pixel location */
+   this.status = 'dead'; 
+};
 
-/* Board class
- *
- *    Properties:
- *       pixWidth
- *       pixHeight
- *       width          (tiles)
- *       height         (tiles) 
- *       tiles[][]      ()
- *
- *    Methods:
- *       draw()
- *
- *       
- * */
+Cell.prototype.draw = function() {
 
+   context.fillStyle = this.status == 'dead' ? '#000' : '#fff';
 
-function Board(canvas, /*opt*/ size) {
+   context.fillRect(this.x, this.y, this.width, this.height);
+};
+
+Cell.prototype.birth = function() { this.status = 'alive'; };
+Cell.prototype.die = function() { this.status = 'dead'; };
+
+function Board(canvas, /*opt*/ xNumCells, /*opt*/ yNumCells) {
 
    this.width = canvas.width;
    this.height = canvas.height;
 
    this.tiles = [];
 
-   this.cellSize = size || Math.ceil(wpix / 100) - 4; 
-   this.cellBorder = 1;
+   this.xNumCells = xNumCells || 100;
+   this.yNumCells = yNumCells || 100;
 
+   var _cellWidth = Math.floor(this.width / this.xNumCells);
+   var _cellHeight = Math.floor(this.height / this.yNumCells);
+   Cell.prototype.width = _cellWidth
+   Cell.prototype.height = _cellHeight;
 
-};
-
-Board.prototype.drawGridlines = function(c) {
-   var x = 0;
-   var y = 0;
-
-   for ( ; x < this.width; x += this.cellSize) {
-      this.drawVLine(c, x++);
-      this.drawVLine(c, x++);
+   for (var i = 0; i < xNumCells; i++) {
+      for (var j = 0; j < yNumCells; j++) {
+         this.tiles[i][i] = new Cell(i, j);
+      }
    }
+};
 
-   for ( ; y < this.height; y += this.cellSize) {
-      this.drawHLine(c, y++);
-      this.drawHLine(c, y++);
+Board.prototype.drawCells = function() {
+   var c = 0;
+
+   for (c = 0; c < this.tiles.length; c++) {
+         alert(cell.x);
+      this.tiles[c].forEach(function(cell, i) {
+         alert(cell.x);
+         if (i % 2) {
+            cell.birth();
+            cell.draw();
+         }
+         else {
+            cell.draw();
+         }
+      });
    }
-
 };
 
-Board.prototype.drawVLine = function(c, x) {
-   c.fillStyle = '#fff';
-   c.fillRect(x, 0, 1, this.height);
-};
-
-Board.prototype.drawHLine = function(c, y) {
-   c.fillStyle = '#fff';
-   c.fillRect(0, y, this.width, 1);
-};
 
