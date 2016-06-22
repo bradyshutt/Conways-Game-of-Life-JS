@@ -9,32 +9,39 @@ var ready = setInterval( function() {
 
 var canvas;
 var context;
+var board;
 
 function start() {
-
-   var cell = new Cell(100, 100, 100, 100);
 
    canvas = document.getElementById('board');
    context = canvas.getContext('2d');
 
-   var headerHeight = document.getElementById('head').clientHeight;
-   var pageHeight = window.innerHeight;
-
-
    canvas.width = window.innerWidth;
-   canvas.height = pageHeight - headerHeight;
+   canvas.height = window.innerHeight - document.getElementById('head').clientHeight; ;
 
-   var board = new Board(canvas, 100);
-
-
-   board.randomize(8).drawCells();
-
-   board.anyAlive();
-
-   //board.start(1000);
-
-   //board.fillBoard();
-
-
+   board = new Board(canvas, 8);
 };
 
+var done = false;
+var running = false;
+
+document.documentElement.addEventListener("keydown", function(event) {
+   if (event.keyCode == 13) {
+      if (!running) {
+         done = false;
+         running = true;
+         board.run(70);
+      }
+      else {
+         done = true;
+         running = false;
+         board.clear();
+         board.randomize(70).draw();
+         canvas.width = window.innerWidth;
+         canvas.height = window.innerHeight - document.getElementById('head').clientHeight;
+
+
+      }
+
+   }
+});
