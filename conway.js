@@ -19,7 +19,7 @@ function start() {
    canvas.width = window.innerWidth;
    canvas.height = window.innerHeight - document.getElementById('head').clientHeight; ;
 
-   board = new Board(canvas, 8);
+   board = new Board(canvas, 6);
 };
 
 var done = false;
