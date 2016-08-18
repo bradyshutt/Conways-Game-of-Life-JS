@@ -1,11 +1,6 @@
 
-var ready = setInterval( function() {
-   if (document.readyState === 'complete') {
-      clearInterval(ready);
-      start();
-   }
-}, 100)
 
+window.onload = start;
 
 var canvas;
 var context;
@@ -19,13 +14,13 @@ function start() {
    canvas.width = window.innerWidth;
    canvas.height = window.innerHeight - document.getElementById('head').clientHeight; ;
 
-   board = new Board(canvas, 6);
+   board = new Board(canvas, 20);
 };
 
 var done = false;
 var running = false;
 
-document.documentElement.addEventListener("keydown", function(event) {
+document.documentElement.addEventListener('keydown', function(event) {
    if (event.keyCode == 13) {
       if (!running) {
          done = false;
@@ -39,9 +34,6 @@ document.documentElement.addEventListener("keydown", function(event) {
          board.randomize(70).draw();
          canvas.width = window.innerWidth;
          canvas.height = window.innerHeight - document.getElementById('head').clientHeight;
-
-
       }
-
    }
 });
