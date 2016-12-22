@@ -1,0 +1,29 @@
+{
+  "name": "conways-game-of-life-js",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life is a cellular automation simulation, devised by    the British mathematician, John Horton Conway.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -w",
+    "build": "browserify app.ts -p [ tsify --noImplicitAny ] > bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradyshutt/Conways-Game-of-Life-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradyshutt/Conways-Game-of-Life-JS/issues"
+  },
+  "homepage": "https://github.com/bradyshutt/Conways-Game-of-Life-JS#readme",
+  "devDependencies": {
+    "tsc": "^1.20150623.0"
+  },
+  "dependencies": {
+    "browserify": "^13.1.1",
+    "tsify": "^2.0.7",
+    "typescript": "^2.1.4"
+  }
+}
