@@ -7,10 +7,20 @@
 <style type="text/css">
    * { margin: 0px; padding: 0px; font: bold 20px Droid Sans, sans-serif; 
        color: #4D4D4D; } 
-   body { background-color: black; }
-   h1 { font-size: 50px; display: block; } 
+   html, body { height: 100%; background-color: black; }
+   h1 { font-size: 50px; display: block; }
    .header { text-align: center; }
    #board { width: 100%; height: 100%; }
+  canvas { display: none; }
+  #instructions {
+    display: flex;
+    height: 75%;
+    justify-content: center;
+    align-items: center;
+  }
+  .instructions h2 {
+      display: inline-block;
+   }
 </style>
 
 </head> 
@@ -19,9 +29,13 @@
       <h1>Conway's Game of Life</h1>
       <p> <a href="http://www.github.com/bradyshutt/">Brady Shutt</a> &nbsp;&nbsp;&nbsp; <a href="https://github.com/bradyshutt/Conways-Game-of-Life-JS ">Github </a>&nbsp;&nbsp;&nbsp; <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">What is This?</a></p>
    </div>
-
    <!-- <canvas id="board" width=500 height=500></canvas> -->
    <canvas id="board"></canvas>
+   <div id="instructions">
+     <div>
+      <h2>Press Enter to start/stop the simulation.</h2>
+       </div>
+   </div>
 
    <script src="bundle.js"></script>
 

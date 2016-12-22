@@ -1,16 +1,21 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 var conway_1 = require("./conway");
+var intro = document.getElementById('instructions');
 var canvas = document.getElementById('board');
 var context = canvas.getContext('2d');
 var game = new conway_1.Conway(canvas, context);
 document.documentElement.addEventListener('keydown', function (event) {
     if (event.keyCode == 13) {
         if (!game.isRunning) {
+            canvas.style.display = "block";
+            intro.style.display = "none";
             game.start();
         }
         else {
             game.stop();
+            canvas.style.display = "none";
+            intro.style.display = "flex";
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight - document.getElementById('head').clientHeight;
         }
@@ -310,7 +315,7 @@ var CellStatus;
 var board_1 = require("./board");
 var CELL_SIZE = 10;
 var GAME_DELAY = 90;
-var CHANCE_OF_SPAWN = 5;
+var CHANCE_OF_SPAWN = 3;
 var Conway = (function () {
     function Conway(canvas, context) {
         this.canvas = canvas;

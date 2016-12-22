@@ -4,7 +4,7 @@ import { Board } from './board';
 
 const CELL_SIZE = 10;
 const GAME_DELAY = 90;
-const CHANCE_OF_SPAWN = 5;
+const CHANCE_OF_SPAWN = 3;
 
 export class Conway {
 
